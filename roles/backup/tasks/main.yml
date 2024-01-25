@@ -1,0 +1,10 @@
+---
+# tasks file for backup
+- name: Taking volume snapshot for backup
+  openstack.cloud.volume_backup:
+    snapshot: "{{ name }}-snapshot-{{ ansible_date_time.iso8601 }}"
+    name: "{{ name }}"
+    volume: "{{ volume_name }}"
+    tags:
+    - volume_snapshot
+  
