@@ -1,0 +1,33 @@
+---
+- name: Actvities on openstack platform
+  hosts: localhost
+  gather_facts: false
+  connection: local
+  vars_files:
+  - "{{ playbook_dir }}/vars/create_vm.yml"
+  - "{{ playbook_dir }}/vars/delete_vm.yml"
+  - "{{ playbook_dir }}/vars/volume_backup.yml"
+  tasks:
+    - name: Instance actions 
+      import_role: instacne
+      loop:
+      - "{{ instance.keys }}"
+      tags:
+      - create_vm
+      - delete_vm
+      - resize_vm
+      - revert_vm
+    - name: Storage actions 
+      import_role: storage
+      loop:
+      - "{{ cinder.keys }}"
+      tags:
+      - create_volume
+      - delete_volume
+    - name: Backup 
+      import_role: backup
+      loop:
+      - "{{ details.keys }}"
+      tags:
+      - vm_backup
+      - volume_backup
