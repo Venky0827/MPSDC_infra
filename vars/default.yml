@@ -1,0 +1,7 @@
+options:
+  create_instance: false
+  delete_instance: false
+  create_volume: false
+  delete_volume: false
+  instance_snapshot: false
+  volume_snapshot: false

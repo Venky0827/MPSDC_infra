@@ -4,30 +4,14 @@
   gather_facts: false
   connection: local
   vars_files:
-  - "{{ playbook_dir }}/vars/create_vm.yml"
-  - "{{ playbook_dir }}/vars/delete_vm.yml"
-  - "{{ playbook_dir }}/vars/volume_backup.yml"
+  - "{{ playbook_dir }}/vars/var.yml"
+  - "{{ playbook_dir }}/vars/defaults.yml"
   tasks:
     - name: Instance actions 
-      import_role: instacne
-      loop:
-      - "{{ instance.keys }}"
-      tags:
-      - create_vm
-      - delete_vm
-      - resize_vm
-      - revert_vm
+      import_role: instance
+
     - name: Storage actions 
-      import_role: storage
-      loop:
-      - "{{ cinder.keys }}"
-      tags:
-      - create_volume
-      - delete_volume
-    - name: Backup 
+      import_role: volume
+
+    - name: Backup activities
       import_role: backup
-      loop:
-      - "{{ details.keys }}"
-      tags:
-      - vm_backup
-      - volume_backup

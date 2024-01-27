@@ -1,39 +1,25 @@
 ---
 # tasks file for instance
-- name: "Creating instance {{ name }} with floating IP"
-  openstack.cloud.server:
-    state: present
-    name: "{{ name }}"
-    flavor: "{{ flavor }}"
-    image: "{{ image }}"
-    network: "{{ network }}"
-    volume_size: "{{ volume_size }}"
-    wait: true
-  loop: 
-  - "{{ instance.keys }}"
-  ignore_errors: true
-  tags:
-  - create_vm
 
-- name: "Deleting instance {{ name }}"
-  openstack.cloud.server:
-    state: absent
-    name: "{{ name }}" # name or ip of instance
-  loop: 
-  - "{{ instance.keys }}"
-  tags:
-  - delete_vm
+- name: Creating instance 
+  import_tasks: create_instance.yml 
+  when: options.create_instance
 
-- name: Changing the VM flavor to new flavor
-  shell: "openstack server resize --flavor {{ flavor }} {{ name }}"
-  loop:
-  - "{{ chnage_flavor.keys() }}"
-  tags:
-  - resize_vm
+- name: Deleting instance 
+  import_tasks: delete_instance.yml
+  when: options.delete_instance
 
-- name: revert the VM flavor to old flavor
-  shell: "openstack server resize --revert {{ name }}"
-  loop:
-  - "{{ revert_vm.keys() }}"
-  tags:
-  - revert_vm
+
+# - name: Changing the VM flavor to new flavor
+#   shell: "openstack server resize --flavor {{ item.flavor }} {{ item.name }}"
+#   loop:
+#   - "{{ chnage_flavor }}"
+#   tags:
+#   - resize_vm
+
+# - name: revert the VM flavor to old flavor
+#   shell: "openstack server resize --revert {{ item.name }}"
+#   loop:
+#   - "{{ revert_vm }}"
+#   tags:
+#   - revert_vm

@@ -1,2 +1,0 @@
-instance:
-- {"name": juvgwkueg, "flavor": id, "image": "image-name", "volume_size": 100, "network": "network-name" }

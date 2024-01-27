@@ -1,0 +1,19 @@
+create_instance:
+  - {"name": juv, "flavor": 4, "image": "cirros", "volume_size": 30, "network": "ext_network" }
+
+delete_instance:
+  - { "name": yvkusdvlv }
+
+create_volume:
+  - { "name": testing_volume1, "size": 30 }
+  - { "name": testing_volume2, "size": 20 }
+  - { "name": testing_volume3, "size": 10 }
+  - { "name": testing_volume4, "size": 5 }
+  - { "name": testing_volume5, "size": 15 }
+
+delete_volume:
+  - { "name": testing_volume1 }
+  - { "name": testing_volume2 }
+  - { "name": testing_volume3 }
+  - { "name": testing_volume4 }
+  - { "name": testing_volume5 }
