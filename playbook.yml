@@ -8,10 +8,13 @@
   - "{{ playbook_dir }}/vars/defaults.yml"
   tasks:
     - name: Instance actions 
-      import_role: instance
+      import_role: 
+        name: instance
 
     - name: Storage actions 
-      import_role: volume
+      import_role: 
+        name: volume
 
     - name: Backup activities
-      import_role: backup
+      import_role: 
+        name: backup
