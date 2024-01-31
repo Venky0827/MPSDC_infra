@@ -4,6 +4,9 @@ create_instance:
 delete_instance:
   - { "name": testing }
 
+change_flavor:
+  - { "vm_name": testing, "flavor": m1.medium }
+
 create_volume:
   - { "name": testing_volume1, "size": 10 }
   - { "name": testing_volume2, "size": 10 }

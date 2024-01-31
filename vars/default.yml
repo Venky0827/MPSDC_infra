@@ -5,3 +5,4 @@ options:
   delete_volume: false
   instance_snapshot: false
   volume_snapshot: false
+  resize_vm: false
