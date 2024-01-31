@@ -8,13 +8,13 @@
   - "{{ playbook_dir }}/vars/default.yml"
   tasks:
     - name: Instance actions 
-      import_role: 
+      ansible.builtin.import_role: 
         name: instance
 
     - name: Storage actions 
-      import_role: 
+      ansible.builtin.import_role: 
         name: volume
 
     - name: Backup activities
-      import_role: 
+      ansible.builtin.import_role: 
         name: backup

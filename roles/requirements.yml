@@ -1,0 +1,15 @@
+---
+- name: instance
+  src: https://github.com/Venky0827/instance.git
+  version: main
+  scm: git
+
+- name: volume
+  src: https://github.com/Venky0827/volume.git
+  version: main
+  scm: git
+  
+- name: backup
+  src: https://github.com/Venky0827/backup.git
+  version: main
+  scm: git

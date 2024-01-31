@@ -1,15 +1,15 @@
 create_instance:
-  - {"name": juv, "flavor": 4, "image": "cirros", "volume_size": 30, "network": "ext_network" }
+  - {"name": testing, "flavor": m1.medium , "image": rhel-8-4-image, "volume_size": 100, "network": "MZ" }
 
 delete_instance:
-  - { "name": yvkusdvlv }
+  - { "name": testing }
 
 create_volume:
-  - { "name": testing_volume1, "size": 30 }
-  - { "name": testing_volume2, "size": 20 }
+  - { "name": testing_volume1, "size": 10 }
+  - { "name": testing_volume2, "size": 10 }
   - { "name": testing_volume3, "size": 10 }
-  - { "name": testing_volume4, "size": 5 }
-  - { "name": testing_volume5, "size": 15 }
+  - { "name": testing_volume4, "size": 10 }
+  - { "name": testing_volume5, "size": 10 }
 
 delete_volume:
   - { "name": testing_volume1 }
@@ -17,3 +17,9 @@ delete_volume:
   - { "name": testing_volume3 }
   - { "name": testing_volume4 }
   - { "name": testing_volume5 }
+
+instance_snapshot:
+  - { "name": testing }
+
+volume_snapshot:
+  - { "volume_name": testing_volume1 }
