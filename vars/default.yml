@@ -1,4 +1,10 @@
 options:
+  delete_port: false
+  delete_subnet: false
+  delete_network: false
+  create_network: false
+  create_subnet: false
+  create_port: false
   create_instance: false
   delete_instance: false
   create_volume: false

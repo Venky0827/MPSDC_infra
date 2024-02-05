@@ -1,0 +1,25 @@
+---
+# tasks file for network
+- name: Deleting ports
+  ansible.builtin.import_tasks: delete_port.yml
+  when: options.delete_port
+
+- name: Deleting subnet
+  ansible.builtin.import_tasks: delete_subnet.yml
+  when: options.delete_subnet
+
+- name: Deleting network
+  ansible.builtin.import_tasks: delete_network.yml
+  when: options.delete_network
+
+- name: creating network
+  ansible.builtin.import_tasks: create_network.yml
+  when: options.create_network
+
+- name: creating subnet
+  ansible.builtin.import_tasks: create_subnet.yml
+  when: options.create_subnet
+
+- name: creating ports
+  ansible.builtin.import_tasks: create_port.yml
+  when: options.create_port

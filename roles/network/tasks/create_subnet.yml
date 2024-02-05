@@ -1,0 +1,12 @@
+- name: Creating subnets
+  openstack.cloud.subnet:
+    state: present
+    network_name: "{{ subnet.network_name }}"
+    name: "{{ subnet.name }}"
+    cidr: "{{ subnet.cidr }}"
+    host_routes:
+      - destination: 0.0.0.0/0
+        nexthop: 12.34.56.78
+  loop: "{{ create_subnet }}"
+  loop_control:
+    loop_var: subnet
