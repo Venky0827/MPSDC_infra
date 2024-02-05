@@ -1,0 +1,7 @@
+- name: creating a new network
+  openstack.cloud.network:
+    state: present
+    name: "{{ network.name }}"
+  loop_control:
+    loop_var: network
+  loop: "{{ create_network }}"

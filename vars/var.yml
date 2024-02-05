@@ -1,5 +1,8 @@
-create_instance:
-  - {"name": testing, "flavor": m1.medium , "image": rhel-8-4-image, "volume_size": 100, "network": "MZ" }
+create_instance_from_image:
+  - {"name": testing, "flavor": m1.medium , "image": rhel-8-4-image, "volume_size": 50, "network": "MZ" }
+
+create_instance_from_volume:
+  - { "name": test-vm,"flavor": m1.medium, "network": MZ, "volume_name": ansible_vol }
 
 delete_instance:
   - { "name": testing }

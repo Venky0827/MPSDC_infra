@@ -1,0 +1,10 @@
+- name: creating ports
+  openstack.cloud.port:
+    state: present
+    name: "{{ port.name }}"
+    network: "{{ port.network_name }}"
+    fixed_ips:
+      - ip_address: "{{ port.static_ip }}"
+  loop: "{{ create_port }}"
+  loop_control:
+    loop_var: port
