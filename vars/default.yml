@@ -6,8 +6,12 @@ options:
   create_subnet: false
   create_port: false
   create_instance: false
+  create_instance_from_image: false
+  create_instance_from_volume: false
   delete_instance: false
   create_volume: false
+  create_volume_from_image: false
+  create_volume_from_snapshot: false
   delete_volume: false
   instance_snapshot: false
   volume_snapshot: false
