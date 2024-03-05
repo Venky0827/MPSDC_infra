@@ -7,6 +7,13 @@
   - "{{ playbook_dir }}/vars/var.yml"
   - "{{ playbook_dir }}/vars/default.yml"
   tasks:
+    - name: Storing auth credentials in variables of openstack platform
+      set_fact:
+        os_auth_url: "{{ credentials.OS_AUTH_URL }}"
+        os_username: "{{ credentials.OS_USERNAME }}"
+        os_password: "{{ credentials.OS_PASSWORD }}"
+        os_project_name: "{{ credentials.OS_PROJECT_NAME }}"
+
     - name: Network activities 
       ansible.builtin.import_role: 
         name: network

@@ -1,7 +1,12 @@
 - name: creating a new network
   openstack.cloud.network:
+    auth:
+      auth_url: "{{ os_auth_url }}"
+      username: "{{ os_username }}"
+      password: "{{ os_password }}"
+      project_name: "{{ os_project_name }}"
     state: present
     name: "{{ network.name }}"
+  loop: "{{ create_network }}"
   loop_control:
     loop_var: network
-  loop: "{{ create_network }}"
