@@ -1,0 +1,37 @@
+image:
+  name: registry.gitlab.com/globetelecom/platforms/amdocs-convergent-charging/infrastructure/ocp4-baremetal-install-and-scaleout:gitlab-runner-v21
+  entrypoint: ["/bin/bash", "-c"]
+
+variables:
+  TAGS: "A global variable"
+  GIT_STRATEGY: clone
+  SELECT_CLUSTER:
+    description: Choose which cluster to scale
+    value: none
+    options:
+    - "dvprvocthcls001-prod1"
+    - "dvptvocthcst001-prod2"
+    - "dvptvocthcte001-sno"
+    - "none"
+  OPERATION:
+    description: Choose either one Install or Scale-Out
+    value: Scale-Out
+    options:
+    - "Install"
+    - "Scale-Out"
+
+dvprvocthcls001_prod1-scaleout:
+  allow_failure: true
+  variables:
+    SECURE_FILES_DOWNLOAD_PATH: ./provisioning/dvprvocthcls001/
+  environment:
+    name: prod
+  script:d
+    - echo "completed scale out successfully.....🎉✨"
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push"'
+      when: never
+    - if: '$SELECT_CLUSTER == "dvprvocthcls001-prod1" && $OPERATION == "Scale-Out"'
+      when: always
+  tags:
+    - prod
